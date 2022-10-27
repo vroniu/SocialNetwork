@@ -32,7 +32,7 @@ public class SocialNetworkPostService {
         }
     }
 
-    public Page<SocialNetworkPost> getPosts(int page, int pageSize) {
+    public Page<SocialNetworkPost> getPosts(Integer page, Integer pageSize) {
         Pageable pageRequest = PageRequest.of(page, pageSize);
         return socialNetworkPostRepository.findAll(pageRequest);
     }

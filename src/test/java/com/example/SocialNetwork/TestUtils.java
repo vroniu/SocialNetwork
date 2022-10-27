@@ -17,4 +17,15 @@ public class TestUtils {
         }
         return sampleData;
     }
+
+    public static SocialNetworkPost generateSamplePost(Long id) {
+        SocialNetworkPost post = new SocialNetworkPost();
+        post.setAuthor("SampleAuthor");
+        post.setContent("SampleContent");
+        post.setViewCount(997L);
+        if (id != null) {
+            post.setId(id);
+        }
+        return post;
+    }
 }

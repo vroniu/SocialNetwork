@@ -1,5 +1,6 @@
 package com.example.SocialNetwork.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
@@ -9,7 +10,7 @@ import javax.persistence.Id;
 import org.springframework.data.annotation.CreatedDate;
 
 @Entity(name = "social_network_post")
-public class SocialNetworkPost {
+public class SocialNetworkPost implements Serializable {
 
     @Id
     @GeneratedValue
