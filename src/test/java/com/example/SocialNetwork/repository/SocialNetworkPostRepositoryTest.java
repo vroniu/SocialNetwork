@@ -2,31 +2,28 @@ package com.example.SocialNetwork.repository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.example.SocialNetwork.TestUtils;
 import com.example.SocialNetwork.entity.SocialNetworkPost;
 
 @SpringBootTest
 public class SocialNetworkPostRepositoryTest {
 
+    private final SocialNetworkPostRepository socialNetworkPostRepository;
+
     @Autowired
-    SocialNetworkPostRepository socialNetworkPostRepository;
+    public SocialNetworkPostRepositoryTest(SocialNetworkPostRepository socialNetworkPostRepository) {
+        this.socialNetworkPostRepository = socialNetworkPostRepository;
+    }
+
 
     void loadSampleData(int postsToGenerate) {
-        List<SocialNetworkPost> sampleData = new ArrayList<>(postsToGenerate);
-        for (int i = 0; i < postsToGenerate; i++) {
-            SocialNetworkPost post = new SocialNetworkPost();
-            post.setAuthor("author" + i);
-            post.setContent("hey! random content no: " + i);
-            post.setViewCount(i * 10L);
-            sampleData.add(post);
-        }
-        socialNetworkPostRepository.saveAll(sampleData);
+        socialNetworkPostRepository.saveAll(TestUtils.generateSamplePosts(postsToGenerate));
     }
 
 
